@@ -188,62 +188,7 @@ document.getElementById("zerarChamadas").addEventListener("click", function () {
 
 // Função para exportar para CSV
 // Função para exportar os dados para Excel
-function exportarParaExcel() {
-  const estiloCabecalho = {
-    font: { bold: true, caps: true },
-    fill: { fgColor: { rgb: "FFFF00" } },
-    alignment: { horizontal: "center" },
-  };
 
-  const estiloResumo = {
-    font: { bold: true },
-    alignment: { horizontal: "center" },
-  };
-
-  let wsAtendimentos = XLSX.utils.json_to_sheet(registrosAtendimentos);
-  let wsAtendimentosRange = XLSX.utils.decode_range(wsAtendimentos["!ref"]);
-
-  for (
-    let col = wsAtendimentosRange.s.c;
-    col <= wsAtendimentosRange.e.c;
-    col++
-  ) {
-    const cellAddress = { c: col, r: wsAtendimentosRange.s.r };
-    const cellRef = XLSX.utils.encode_cell(cellAddress);
-    if (wsAtendimentos[cellRef]) {
-      wsAtendimentos[cellRef].s = estiloCabecalho;
-    }
-  }
-
-  let wsResumo = XLSX.utils.aoa_to_sheet([
-    ["Total de Atendimentos", contagemAtendimentos],
-    ["Total de Senhas Geradas", senhaAtual],
-  ]);
-
-  const cellAddresses = [
-    { c: 0, r: 0 },
-    { c: 1, r: 0 },
-    { c: 0, r: 1 },
-    { c: 1, r: 1 },
-  ];
-
-  cellAddresses.forEach(({ c, r }) => {
-    const cellAddress = { c, r };
-    const cellRef = XLSX.utils.encode_cell(cellAddress);
-    if (wsResumo[cellRef]) {
-      wsResumo[cellRef].s = estiloResumo;
-    }
-  });
-
-  let wb = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(wb, wsAtendimentos, "Atendimentos");
-  XLSX.utils.book_append_sheet(wb, wsResumo, "Resumo");
-
-  let nomeArquivo = `atendimentos_${
-    new Date().toISOString().split("T")[0]
-  }.xlsx`;
-  XLSX.writeFile(wb, nomeArquivo);
-}
 document.getElementById("exportarCSV").addEventListener("click", function () {
   if (filaNomes.length === 0) {
     alert("Não há senhas para exportar.");
