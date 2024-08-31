@@ -22,7 +22,7 @@ body {
 
 /* Barra Superior */
 .barraSuperior {
-  margin-top: 1%;
+  margin-top: 5%;
   display: flex;
   justify-content: center; /* Centraliza horizontalmente */
   align-items: center; /* Centraliza verticalmente */
