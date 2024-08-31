@@ -1,0 +1,151 @@
+/* Estilos Globais */
+body {
+  background-color: #0761ac;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  justify-content: space-between;
+}
+
+/* Barra Superior */
+.barraSuperior {
+  margin-top: 1%;
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  height: 15%; /* Responsivo com a altura da tela */
+  padding: 0 2vw; /* Espaçamento horizontal */
+}
+
+.imageLogo {
+  width: 10vw; /* Usar vw para manter o tamanho responsivo */
+  max-width: 100px; /* Limita o tamanho máximo para telas menores */
+  margin-right: 1vw;
+}
+
+#novoNome {
+  text-transform: uppercase;
+}
+
+.centralTexto {
+  font-size: 4vw; /* Usar vw para dimensionamento responsivo do texto */
+  font-weight: 700;
+  color: #dae908;
+  text-align: center;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Main Content */
+.main-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 2% 5%;
+  flex-grow: 1;
+  height: 70%; /* Permite que o conteúdo ocupe o espaço restante */
+}
+
+.boxCentralizado,
+.boxDireita {
+  display: flex;
+  flex-direction: column; /* Alinha os itens verticalmente */
+  justify-content: center;
+  align-items: center;
+  width: 45%; /* Ajusta a largura do box centralizado */
+  height: 90%; /* Certifica-se de que o box centralizado ocupe a mesma altura do boxDireita */
+  margin-top: 5%; /* Ajuste da margem superior */
+}
+
+.pessoaBox {
+  background-color: #054a8c;
+  border: 2px solid #dae908;
+  border-radius: 10px;
+  padding: 2vw;
+  text-align: center;
+  color: #ffffff;
+  font-size: 2vw;
+  margin-bottom: 1.5vw;
+  font-weight: 700;
+  width: 100%; /* Preenche totalmente a largura do container */
+}
+
+.boxDireita .pessoaBox {
+  margin-bottom: 2vw;
+}
+
+/* Responsividade */
+
+@media (min-width: 2560px) {
+  .centralTexto {
+    font-size: 3vw;
+  }
+
+  .pessoaBox {
+    font-size: 2.5vw;
+    padding: 2.2vw;
+  }
+}
+
+@media (min-width: 1920px) and (max-width: 2559px) {
+  .centralTexto {
+    font-size: 4vw;
+  }
+
+  .pessoaBox {
+    font-size: 2vw;
+    padding: 2vw;
+  }
+}
+
+@media (min-width: 1366px) and (max-width: 1919px) {
+  .centralTexto {
+    font-size: 4.5vw;
+  }
+
+  .pessoaBox {
+    font-size: 3vw;
+    padding: 1.8vw;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1365px) {
+  .centralTexto {
+    font-size: 5vw;
+  }
+
+  .pessoaBox {
+    font-size: 3.5vw;
+    padding: 2vw;
+  }
+}
+
+@media (max-width: 1023px) {
+  .centralTexto {
+    font-size: 6vw;
+  }
+
+  .pessoaBox {
+    font-size: 4.5vw;
+    padding: 2.5vw;
+  }
+
+  .imageLogo {
+    width: 12vw;
+  }
+}
