@@ -31,9 +31,9 @@ body {
 }
 
 .imageLogo {
-  width: 10vw; /* Usar vw para manter o tamanho responsivo */
+  width: 15vw; /* Usar vw para manter o tamanho responsivo */
   max-width: 100px; /* Limita o tamanho máximo para telas menores */
-  margin-right: 1vw;
+  margin-right: 2vw;
 }
 
 #novoNome {
