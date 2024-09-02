@@ -200,7 +200,7 @@ document.getElementById("exportarCSV").addEventListener("click", function () {
     return;
   }
 
-  // Dados para o CSV
+  // Dados para o xls
   let csvContent = "data:text/xls;charset=utf-8,Data,Hora,Nome Chamado\n";
 
   filaNomes.forEach(function (item) {
