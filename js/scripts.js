@@ -149,7 +149,7 @@ document.getElementById("abrirMonitor").addEventListener("click", function () {
           <!-- Barra Superior com a Logo e o Texto -->
           <div class="row barraSuperior">
             <div class="col-xs-2">
-              <img src="./images/SEPD.png" class="imageLogo" />
+              <img src="images/SEPD.png" class="imageLogo" />
             </div>
             <div class="col-xs-10">
               <span class="centralTexto">CONTROLE DE SENHA - GAMA</span>
