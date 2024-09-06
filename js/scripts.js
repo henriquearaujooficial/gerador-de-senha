@@ -66,34 +66,46 @@ function chamarNome(nome) {
   atualizarMonitor();
 }
 
-// Atualiza os elementos da tela com os nomes
+// Função para atualizar os nomes chamados e exibi-los no monitor e na tela
 function atualizarNomesExibidos() {
-  if (filaNomes.length > 0) {
-    proximoChamada.querySelector("#nomeAtualTexto").innerText =
-      filaNomes[0].nome;
-  } else {
-    proximoChamada.querySelector("#nomeAtualTexto").innerText = "";
-  }
+  // Exibe o próximo nome
+  proximoChamada.querySelector("#nomeAtualTexto").innerText =
+    filaNomes.length > 0 ? filaNomes[0].nome : "Sem Chamadas";
 
-  if (filaNomes.length > 1) {
-    ultimaChamada.querySelector("#nomeAtualTexto").innerText =
-      filaNomes[1].nome;
-  } else {
-    ultimaChamada.querySelector("#nomeAtualTexto").innerText = "";
-  }
+  // Exibe o último nome
+  ultimaChamada.querySelector("#nomeAtualTexto").innerText =
+    filaNomes.length > 1 ? filaNomes[1].nome : "";
 
-  if (filaNomes.length > 2) {
-    penultimaChamada.querySelector("#nomeAtualTexto").innerText =
-      filaNomes[2].nome;
-  } else {
-    penultimaChamada.querySelector("#nomeAtualTexto").innerText = "";
-  }
+  // Exibe o penúltimo nome
+  penultimaChamada.querySelector("#nomeAtualTexto").innerText =
+    filaNomes.length > 2 ? filaNomes[2].nome : "";
 
-  if (filaNomes.length > 3) {
-    antepenultimaChamada.querySelector("#nomeAtualTexto").innerText =
-      filaNomes[3].nome;
-  } else {
-    antepenultimaChamada.querySelector("#nomeAtualTexto").innerText = "";
+  // Exibe o antepenúltimo nome
+  antepenultimaChamada.querySelector("#nomeAtualTexto").innerText =
+    filaNomes.length > 3 ? filaNomes[3].nome : "";
+
+  atualizarMonitor(); // Atualiza também no monitor externo
+}
+
+function atualizarMonitor() {
+  if (monitorWindow && !monitorWindow.closed) {
+    // Atualiza os textos do monitor externo
+    monitorWindow.document.getElementById(
+      "nomeAtualTextoMonitorProximo"
+    ).innerText =
+      proximoChamada.querySelector("#nomeAtualTexto").innerText || "";
+    monitorWindow.document.getElementById(
+      "nomeAtualTextoMonitorUltima"
+    ).innerText =
+      ultimaChamada.querySelector("#nomeAtualTexto").innerText || "";
+    monitorWindow.document.getElementById(
+      "nomeAtualTextoMonitorPenultima"
+    ).innerText =
+      penultimaChamada.querySelector("#nomeAtualTexto").innerText || "";
+    monitorWindow.document.getElementById(
+      "nomeAtualTextoMonitorAntepenultima"
+    ).innerText =
+      antepenultimaChamada.querySelector("#nomeAtualTexto").innerText || "";
   }
 }
 
@@ -122,6 +134,18 @@ botaoChamar.addEventListener("click", function () {
     formularioChamada.style.display = "none"; // Oculta o formulário após chamar o nome
   } else {
     alert("Por favor, insira um nome ou senha.");
+  }
+});
+
+// Função para pular a chamada atual e chamar o próximo nome na fila
+document.getElementById("pularChamada").addEventListener("click", function () {
+  if (filaNomes.length > 0) {
+    // Remove o primeiro item da fila (nome atual)
+    filaNomes.shift();
+    atualizarNomesExibidos(); // Atualiza os nomes na tela
+    atualizarMonitor(); // Atualiza o monitor externo
+  } else {
+    alert("Não há mais nomes na fila para pular.");
   }
 });
 
