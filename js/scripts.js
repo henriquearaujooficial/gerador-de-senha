@@ -176,7 +176,7 @@ document.getElementById("abrirMonitor").addEventListener("click", function () {
               <img src="images/SEPD.png" class="imageLogo" />
             </div>
             <div class="col-xs-10">
-              <span class="centralTexto">CONTROLE DE SENHA - GAMA</span>
+              <span class="centralTexto">CONTROLE DE SENHA - PLANALTINA</span>
             </div>
           </div>
           <div class="container">
